@@ -39,7 +39,9 @@ function App() {
   };
 
   const calculate = () => {
-    if (firstNumber === null || operator === null) return;
+    if (firstNumber === null || operator === null) {
+      return;
+    }
 
     const secondNumber = parseFloat(display);
     let result;
@@ -65,6 +67,7 @@ function App() {
           setWaitingForSecondNumber(true);
           return;
         }
+
         result = firstNumber / secondNumber;
         break;
 
@@ -134,7 +137,7 @@ function App() {
     "C",
     "÷",
     "×",
-    "-",
+    "−",
     "7",
     "8",
     "9",
@@ -151,29 +154,36 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-green-50 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
+
+      {/* Calculator */}
       <div className="w-full max-w-sm">
+
         <div className="text-center mb-6">
-          <h1 className="text-4xl font-bold text-green-700">
-            CvSU Calculator
+          <h1 className="text-4xl font-bold text-gray-900">
+            Calculator
           </h1>
 
           <p className="text-gray-600 mt-2">
-            React + Tailwind CSS Calculator Project
+            React + Tailwind CSS
           </p>
         </div>
 
         <div className="bg-gray-900 rounded-3xl p-5 shadow-2xl">
+
+          {/* Display */}
           <div className="bg-gray-800 rounded-2xl p-5 mb-5">
             <div className="text-right text-white text-4xl font-semibold break-all">
               {display}
             </div>
           </div>
 
+          {/* Buttons */}
           <div className="grid grid-cols-4 gap-3">
+
             {buttons.map((button) => {
               const isOperator =
-                ["÷", "×", "-", "+"].includes(button);
+                ["÷", "×", "−", "+"].includes(button);
 
               const isEquals = button === "=";
               const isClear = button === "C";
@@ -213,11 +223,14 @@ function App() {
                 </button>
               );
             })}
+
           </div>
         </div>
 
+        {/* User Guide */}
         <div className="bg-white rounded-2xl shadow-lg p-6 mt-6">
-          <h2 className="text-2xl font-bold text-green-700 mb-3">
+
+          <h2 className="text-2xl font-bold text-gray-900 mb-3">
             User Guide
           </h2>
 
@@ -244,10 +257,10 @@ function App() {
 
           <ul className="list-disc list-inside text-gray-600 mt-2 space-y-1">
             <li>Addition (+)</li>
-            <li>Subtraction (-)</li>
+            <li>Subtraction (−)</li>
             <li>Multiplication (×)</li>
             <li>Division (÷)</li>
-            <li>Decimal Numbers</li>
+            <li>Decimal numbers (.)</li>
           </ul>
 
           <h3 className="font-bold text-gray-900 mt-5">
@@ -255,42 +268,18 @@ function App() {
           </h3>
 
           <p className="text-gray-600 mt-2">
-            Use your keyboard for faster input. Press Enter to
-            calculate and Escape to clear.
+            You can also use your keyboard to enter numbers and
+            operations. Press Enter to calculate and Escape to clear.
           </p>
+
         </div>
 
-        <div className="bg-white rounded-2xl shadow-lg p-6 mt-6">
-          <h2 className="text-xl font-bold text-green-700 mb-2">
-            CvSU Vision
-          </h2>
-
-          <p className="text-gray-600 text-sm">
-            The premier university in historic Cavite globally
-            recognized for excellence in character development,
-            academics, research, innovation and sustainable
-            community engagement.
-          </p>
-
-          <h2 className="text-xl font-bold text-green-700 mt-4 mb-2">
-            CvSU Mission
-          </h2>
-
-          <p className="text-gray-600 text-sm">
-            Cavite State University shall provide excellent,
-            equitable, and relevant educational opportunities in
-            the arts, sciences, and technology through quality
-            instruction and responsive research and development
-            activities. It shall produce professional, skilled,
-            and morally upright individuals for global
-            competitiveness.
-          </p>
-        </div>
-
+        {/* Footer */}
         <div className="text-center text-gray-500 text-sm mt-6">
           <p>DCIT 26: Application Development and Emerging Technologies</p>
-          <p className="mt-1">Laboratory 1 - Calculator Project</p>
+          <p className="mt-1">Laboratory 1 — Calculator Project</p>
         </div>
+
       </div>
     </div>
   );
